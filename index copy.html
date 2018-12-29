@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+  	<meta name="description" content="Anthony's quiz app regarding photography">
+    
+    <title>Anthony's Photography Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="float-grid.css" rel="stylesheet" type="text/css" />
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header role='banner'>
+      <div class='row'>
+        <div class='col-12'>
+          <p class='title'>Image Analyzer</p> 
+        </div>
+      </div>
+    </header>  
+    <nav role='navigation' class='row'>
+      <div class='col-6'>
+        <p class='sub_title'><span class='bold'>10 Questions</span> | By Anthony Kim</p>
+      </div>
+      <div class='col-6'>
+        <div class='sub_title al_right'>
+          <a href='mailto:anthony011@gmail.com' class='sub_title'>All images © <span class='bold'>2018</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <main role='main'>
+      <div class='row bg_white js-content'> 
+        <div class='col-12 content'>
+          <p class='test'>
+              Holiday deals to make your spirits bright
+          </p>
+          Upload a local file to read Exif data.
+          <input id="file-input" type="file" />
+        </div>
+      </div>
+
+      <div class='row bg_white js-content'> 
+        <div class='col-4 content'>
+            <div class='js-exif'>Exif</div> 
+        </div> 
+
+        <div class='col-4 content'>
+          <div id='map'></div> 
+        </div> 
+        
+        <div class='col-4 content'>
+          <div class='js-weather'>Weather</div> 
+        </div> 
+      </div>
+      <div class='row bg_white js-content'> 
+        <div class='col-12 content'>
+          <div class='js-img'> 
+          </div>
+        </div>
+      </div>
+    </main>
+      <!-- 
+      <div class='row bg_white'>
+        <div class='col-12 logo'>
+          <footer role='contentinfo'>
+          <img class='logo' src='http://cfile25.uf.tistory.com/original/197D2E244B84D8564AB57C'>
+          </footer>
+        </div>
+      </div>
+      -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="exif.js"></script> 
+    <script type="text/javascript" src="index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZru626EgBL1Ry4UzDOIr-VpjunKoQtO8&callback=initMap"
+
+  async defer></script>
+
+  </body>
+</html>
