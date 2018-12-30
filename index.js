@@ -31,7 +31,7 @@ function updateMap(lat, lon) {
     center: {lat: lat, lng: lon},
     mapTypeControl: false,
     streetViewControl: false,
-    zoom: 18 
+    zoom: 15 
   });
 
   var marker = new google.maps.Marker({
