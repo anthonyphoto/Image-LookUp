@@ -51,8 +51,8 @@
 }
 
 
-/* Non-mobile, grid */
-@media only screen and (min-width: 640px) {
+/* Non-mobile, grid Originally 640 -> Updated 760 */
+@media only screen and (min-width: 760px) {
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;

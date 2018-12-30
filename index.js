@@ -181,7 +181,8 @@ function handleSubmit() {
 }
 
 function handleDemo() {
-  $('#js-demo').on('click', function() {
+  $('#js-demo').on('click', function(event) {
+    event.preventDefault(); /* diasble <a href */
     console.log('demo clicked');
     
   });
