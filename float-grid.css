@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 /* Grid measurements:
@@ -49,7 +50,9 @@
 .col-3, .col-4, .col-6, .col-8, .col-12 {
   width: 100%;
 }
-
+.mg_top {
+  margin-top: 2rem;
+}
 
 /* Non-mobile, grid Originally 640 -> Updated 760 */
 @media only screen and (min-width: 760px) {
@@ -78,34 +81,33 @@
   .col-12 {
     width: 100%;
   }
-
+  .mg_top {
+    margin-top: 8rem;
+  }
 }
 
+/*
 @media only screen and (min-width: 960px) {
-  /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;
   }
 
-  /* 4 columns */
   .col-4 {
     width: 33.33%;
   }
 
-  /* 6 columns */
   .col-6 {
     width: 50%;
 
   }
 
-  /* 8 columns */
   .col-8 {
     width: 66.67%;
   }
 
-  /* 12 columns */
   .col-12 {
     width: 100%;
   }
 
 }
+*/

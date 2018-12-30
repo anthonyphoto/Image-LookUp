@@ -189,10 +189,9 @@ function handleDemo() {
 }
 
 $(_ => {
-//  initMap();
+/*  initMap(); */
   handleSubmit();  // Upon submitting an image
   handleDemo();    // Upon clicking demo link
   
 });
-
 
