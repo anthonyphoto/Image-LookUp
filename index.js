@@ -37,7 +37,7 @@ function updateMap(lat, lon) {
       fontWeight: 'bold',
       fontSize: '24px',
       fontFamily: 'Roboto',
-      text: 'The pic was taken\n from here',
+      text: 'Your pic was taken\n from here',
     },
     icon: {
       labelOrigin: new google.maps.Point(11, 60),
