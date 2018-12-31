@@ -38,12 +38,13 @@ function updateMap(lat, lon) {
     position: {lat: lat, lng: lon},
     label: {
       color: '#F22613',
-      //fontWeight: 'bold',
+      fontWeight: 'bold',
+      fontSize: '24px',
       fontFamily: 'Roboto',
       text: 'The pic was taken\n from here',
     },
     icon: {
-      labelOrigin: new google.maps.Point(11, 50),
+      labelOrigin: new google.maps.Point(11, 60),
       url: './img/cam_1.gif',
     },
     map: map
@@ -217,7 +218,7 @@ function renderSpec(exif) {
   $('#js-col1').append((exif.resX)? `<li>Resolution: ${exif.resX} x ${exif.resY}</li>`:'');
   $('#js-col1').append((exif.strSize)? `<li>File Size: ${exif.strSize}</li>`:'');
 
-  $('#js-col2').append((exif.strFocal)? `<li>Shot at: ${exif.strFocal}</li>`:'');
+  $('#js-col2').append((exif.strFocal)? `<li>Shot at ${exif.strFocal}</li>`:'');
   $('#js-col2').append(shotInfo? `<li>${shotInfo}</li>`:'');
   $('#js-col2').append(exif.strFlash? `<li>${exif.strFlash}</li>`:'');
 
