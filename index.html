@@ -3,14 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-  	<meta name="description" content="Anthony's quiz app regarding photography">
+  	<meta name="description" content="exif info analysis">
     
     <title>Image LookUp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-<!--
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
--->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
     <link href="float-grid.css" rel="stylesheet" type="text/css" />
     <link href="index.css" rel="stylesheet" type="text/css" />
   </head>
@@ -22,45 +20,29 @@
         <p class='ban_desc'>Getting tired of tracking image information? This page will allow to analyze your local images from your phone, tablet, or computer.  You can easily check image information such as camera brand, setting, file info, and timestamp the photo was taken. You can also view a map indicating where the photo was taken and check the current weather of that place.
         </p>     
       </div>
-    
     </header>  
-<!--    <nav role='navigation' class='row'>
-      <div class='col-6'>
-        <p class='sub_title'><span class='bold'>10 Questions</span> | By Anthony Kim</p>
-      </div>
-      <div class='col-6'>
-        <div class='sub_title al_right'>
-          <a href='mailto:anthony011@gmail.com' class='sub_title'>All images © <span class='bold'>2018</span></a>
-        </div>
-      </div>
-    </nav>
-  -->
     <main class='main_bg' role='main'>
       <div class='row'> 
         <div class='col-6'>
-        
-          <p class='font_l ind_l mg_top'>
-              Upload a local file to read
-          </p>
+          <p class='font_l ind_l mg_top'>Upload a local file to read</p>
           <input id="file-input" type="file" class="inputfile" name="yourFile" accept="image/*" />
           <label for="file-input" class="btn_blue ind_l">Choose an image</label>
           <div id='js-demo' class='demo_link'>
             <!--  <a href="/" onclick="return false;">Show Demo</a>  -->
             <a href="/">Show Demo</a>
           </div>
-          <div class='mg_top'></div> <!-- extra line space for mobile -->
+          <div class='mg_top'></div> <!-- add extra space -->
         </div>
         <div class='col-6'>
           <div>
             <img class='cover' src='./img/main.jpg' alt='main_image'>
           </div>
         </div>
-
       </div>
     </main>
-    <div id='js-rpt' class='main_bg hidden'>
-      <div class='font_m'>&nbsp;</div> <!-- add a top margin -->
 
+    <div id='js-rpt' class='main_bg hidden'>
+      <div class='font_m'>&nbsp;</div> <!-- add extra space -->
       <div class='row'>
           <div class='col-12'>
           <div class='font_l al_center'>Summary</div>
@@ -86,7 +68,6 @@
               </ul>
             </div>
           </div>
-
           <div class='col-4'>
             <div class='font_s_title'>
                 Camera Setting
@@ -99,7 +80,6 @@
               </ul>
             </div>
           </div>
-
           <div class='col-4'>
             <div class='font_s_title spec_col'>
                 Camera Info
@@ -112,11 +92,10 @@
               </ul>
             </div>
           </div>    
-
         </div>
       </div>
 
-      <div class='font_m'>&nbsp;</div> <!-- add a top margin -->
+      <div class='font_m'>&nbsp;</div> <!-- add extra space -->
 
       <div class='row'> 
         <div class='col-12'>
@@ -124,15 +103,12 @@
           <div class='font_m al_center' id='js-loc-desc'>
             Please find a spot where the picture was taken in the map below.  
             The current weather in San Diego is "HAZE" and temperature is 47°F.
- 
           </div>
-          <div class='font_m'>&nbsp;</div> <!-- add a top margin -->
+          <div class='font_m'>&nbsp;</div> <!-- add extra space -->
           <div id='map'></div> 
-          <div class='font_m'>&nbsp;</div> <!-- add a top margin -->
-
+          <div class='font_m'>&nbsp;</div> <!-- add extra space -->
         </div> 
       </div>
-      
       <div class='row'> 
         <div class='col-12'>
           <div id='js-img' class='al_center'> 
@@ -140,22 +116,11 @@
         </div>
       </div>
     </div>
-      <!-- 
-      <div class='row bg_white'>
-        <div class='col-12 logo'>
-          <footer role='contentinfo'>
-          <img class='logo' src='http://cfile25.uf.tistory.com/original/197D2E244B84D8564AB57C'>
-          </footer>
-        </div>
-      </div>
-      -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="exif.js"></script> 
     <script type="text/javascript" src="index.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZru626EgBL1Ry4UzDOIr-VpjunKoQtO8&callback=initMap" async defer></script>
-
-    
- 
   </body>
 </html>

@@ -1,9 +1,5 @@
 'use strict';
 
-
-
-
-/* openweathermap API*/
 const weatherKey = '9618a8d8432940b2ef54e1ec33601bab';
 const weatherEndpoint = 'https://api.openweathermap.org/data/2.5/weather'
 
@@ -19,9 +15,9 @@ function initMap() {
 
 
   });
-//  bounds  = new google.maps.LatLngBounds();
 }
 
+/* update map with a new position and marker */
 function updateMap(lat, lon) {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: lat, lng: lon},
@@ -29,7 +25,6 @@ function updateMap(lat, lon) {
     streetViewControl: false,
     zoom: 15 
   });
-
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lon},
     label: {
@@ -37,7 +32,7 @@ function updateMap(lat, lon) {
       fontWeight: 'bold',
       fontSize: '24px',
       fontFamily: 'Roboto',
-      text: 'Your pic was taken\n from here',
+      text: 'Your pic was taken from here',
     },
     icon: {
       labelOrigin: new google.maps.Point(11, 60),
@@ -47,13 +42,13 @@ function updateMap(lat, lon) {
   });
 }
 
+/* show demo with my image */
 function handleDemo() {
   $('#js-demo').on('click', function(event) {
     event.preventDefault(); /* diasble <a href */
     const lat = 34.060200;  /* Demo GPS */
     const lon = -118.278273;
     const demo = {arrDt: ["October 14, 2016", "2:15pm"], resX: 5616, resY: 3744, strAperture: "F/2", strCamera: "Canon", strFile: "IMG_4215.JPG", strFlash: "Flash did not fire", strFocal: "135 mm", strIso: "ISO-400", strModel: "Canon EOS 5D Mark II", strOwner: "Anthony Kim", strSW: "Adobe Photoshop CS6", strShutter: "1/640 sec", strSize: "5.6 MB" }
-
     resetPage();
     getWeather(lat, lon);   
     updateMap(lat, lon);
@@ -64,14 +59,14 @@ function handleDemo() {
   });
 }
 
+/* redner uploaded image */
 function renderUploadedImage(e, file){
-//  const file = e.target.files[0];
+  //const file = e.target.files[0];
   const fr = new FileReader();
   fr.readAsDataURL(file);
-  console.log(file);
-
+  //console.log(file);
   fr.onload = function(e) {
-    $('#js-img').append(`<img class='frame' src='${this.result}'>`);
+    $('#js-img').append(`<img class='frame' alt='Uploaded Image' src='${this.result}'>`);
   }
 
 }
@@ -87,15 +82,14 @@ function gpsToNum(arrGps, ref) {
   }
 }
 
+/* convert size to user friendly format */
 function convertSize(byte) {
   return (byte < 2**20)? 
     `${Math.round(byte / 2**10)} KB`: `${Math.round(byte/2**10/100)/10} MB`;
 }
 
-/* Convert date form to customized format: 
- * "2015:08:09 18:31:33" -> ["August 9, 2015", "06:31pm"]
- * return type is array - 0: date 1: time
- */
+/* convert date string to customized array format: 
+  e.g., "2015:08:09 18:31:33" -> ["August 9, 2015", "06:31pm"] */
 function convertDate(strDt) {
   const arrDt = strDt.split(/[: ]+/);
   const strYear = arrDt[0];
@@ -109,6 +103,7 @@ function convertDate(strDt) {
   return [`${strMonth} ${numDay}, ${strYear}`, `${numHr}:${strMin}${apm}`];
 }
 
+/* polish software name */
 function convertSW(softWare, make){
   if (make === 'Apple' && softWare.slice(0,1) === '1') softWare = 'iOS ' + softWare;  
   if (softWare.split(/ /)[0] === 'Adobe') softWare = softWare.split(/ /).slice(0,3).join(' ');
@@ -116,12 +111,13 @@ function convertSW(softWare, make){
   return softWare;  /* return customized name */
 }
 
-/* Reformat String with mas-Length */
+/* handle extra long string */
 function sliceString (str, maxLen) {
   return (str.length > maxLen)? 
    `${str.slice(0,3)}~${str.slice(-maxLen/2)}`: str;
 }
 
+/* return customized exif object */
 function customExif(file) {
   const exifObj = file.exifdata;  
   console.log(exifObj);
@@ -143,14 +139,14 @@ function customExif(file) {
     strSW: (exifObj.Software)? convertSW(exifObj.Software, exifObj.Make) : '',
     strOwner: (file.iptcdata.byline)? file.iptcdata.byline : ''
 
-
   }
 }
 
 
 function renderWeather(responseJson) {
-  const tempF = Math.round((responseJson.main.temp - 273.15) * 9/5 + 32);  // Convert Kelvin -> Farenheit
-
+  /* convert K->F degree */
+  const tempF = Math.round((responseJson.main.temp - 273.15) * 9/5 + 32);  
+  
   $('#js-loc-sum').html(` in ${responseJson.name} area `);
   $('#js-loc').html(responseJson.name);
   $('#js-loc-desc').html(`
@@ -159,11 +155,11 @@ function renderWeather(responseJson) {
 
   console.log(responseJson);
   console.log(responseJson.weather[0].icon);
-  console.log(new Date(responseJson.dt * 1000));
+  //console.log(new Date(responseJson.dt * 1000));
   
 }
 
-/* Display the weather */
+/* get the weather info using API */
 function getWeather(lat, lon) {
   console.log(lat, lon);
 
@@ -171,23 +167,23 @@ function getWeather(lat, lon) {
   fetch(url)
     .then(response => {
       if (response.ok)  return response.json();
-      throw new Error(response.statusText);
+      throw new Error(response.statusText); /* catch server defined errors e.g, 404 */
     })
-    .then(responseJson => renderWeather(responseJson))
+    .then(responseJson => renderWeather(responseJson))  /* display weather section */
     .catch(err => {
-      console.log('error' + err.message)
+      console.log('error' + err.message);
     });
 }
 
 function renderGpsFailure() {
   $('#js-loc').html('Location');
   $('#js-loc-desc').append('Unfortunately this file does not include GPS information.');
-  $('#map').addClass('hidden');
+  $('#map').addClass('hidden'); 
 }
 
 function resetPage() {
-  $('.hidden').removeClass('hidden');
-  $('#js-summary, #js-col1, #js-col2, #js-col3, #js-loc, #js-loc-desc, #js-img').empty();
+  $('.hidden').removeClass('hidden'); /* show all hidden sections */
+  $('#js-summary, #js-col1, #js-col2, #js-col3, #js-loc, #js-loc-desc, #js-img').empty();  /* remove previous contents */
 }
 
 
@@ -205,11 +201,13 @@ function renderSummary(exif) {
 }
 
 function renderSpec(exif) {
-  let shotInfo = ''; /* Concatenate shot info for col2*/
-  if (exif.strShutter) shotInfo = exif.strShutter;
-  if (exif.strAperture) shotInfo += ', ' + exif.strAperture;
-  if (exif.strIso) shotInfo += ', ' + exif.strIso;
-
+  let shotInfo = ''; /* merge shot settings in one string */
+  if (exif.strShutter) {
+    shotInfo = exif.strShutter;
+    if (exif.strAperture) shotInfo += ', ' + exif.strAperture;
+    if (exif.strIso) shotInfo += ', ' + exif.strIso;
+  }
+  /* display detailed image data in 3 columns */
   $('#js-col1').append((exif.strFile)? `<li>Name: ${exif.strFile}</li>`:'');
   $('#js-col1').append((exif.resX)? `<li>Resolution: ${exif.resX} x ${exif.resY}</li>`:'');
   $('#js-col1').append((exif.strSize)? `<li>File Size: ${exif.strSize}</li>`:'');
@@ -220,27 +218,20 @@ function renderSpec(exif) {
   $('#js-col3').append(exif.strModel? `<li>Model: ${exif.strModel}</li>`:'');
   $('#js-col3').append(exif.strSW? `<li>SW: ${exif.strSW}</li>`:'');
 
-  if (!$('#js-col2').html()) {
-    $('#js-col2').append('<li>Information not available</li>');
-  } 
-
-  if (!$('#js-col3').html()) {
-    $('#js-col3').append('<li>Information not available</li>');
-  } 
-  
-
+  /* handling no data */
+  if (!$('#js-col2').html()) $('#js-col2').append('<li>Information not available</li>');
+  if (!$('#js-col3').html()) $('#js-col3').append('<li>Information not available</li>');
 }
 
 function handleSubmit() {
 
   $('#file-input').on('change', function(e) {
 
-
     const file = e.target.files[0];
     if (file && file.name) {
+      resetPage();  /* Remove previous contents and hidden sections  */
 
-      resetPage();  /* Initialize the result page */
-
+      /* Retreive meta data from the file */ 
       EXIF.getData(file, function() {
         /* Get Geo Codes */
         const lat = gpsToNum(file.exifdata.GPSLatitude, file.exifdata.GPSLatitudeRef);  
@@ -250,21 +241,16 @@ function handleSubmit() {
 
         if (lat && lon) {
           getWeather(lat, lon);   /* get weather and display */
-          updateMap(lat, lon);
+          updateMap(lat, lon);    /* update google map based on new GPS) */
         } else {
-          renderGpsFailure();
+          renderGpsFailure();     /* No GPS */
         }
 
         renderUploadedImage(e, file); /* display uploaded image */
-        
-        renderSummary(exif);
-        renderSpec(exif);
+        renderSummary(exif);  /* display result summary section */
+        renderSpec(exif);     /* display image spec section */
 
-        //$('#js-rpt').scrollTop(800); // Move to the report section
-        //$(window).scrollTop(800); // Move to the report section
-        $(window).scrollTop( $("#js-rpt").offset().top );
-
-
+        $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
       });
     }
   });
