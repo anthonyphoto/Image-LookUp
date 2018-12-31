@@ -1,4 +1,7 @@
 ## Image-LookUp 
+
+### Demo Link https://anthonyphoto.github.io/Image-LookUp/
+
 ### Abstract
 As an iPhone/iPad user, I was hoping Apple would provide a tool to view details of local image files.  Currently the user can access only very limited information (timestamp and location), but can't check file size, dimension, shooting setting and camera info.  This is painful especially when you receive files from other devices.  This app will allow the user to analyze their local images with detailed information.
 
@@ -23,11 +26,12 @@ As an iPhone/iPad user, I was hoping Apple would provide a tool to view details 
 * As an app user, I want to check the weather condition in the picture ~~at the time of when the picture was taken.~~
   - *Note: The historic weather feature is removed due to the high cost of API.  The app will show the current weather condition of the location in the picture instead.*
 
+### Technology Used
+* HTML/CSS/JavaScript/jQuery
+
 ### Sample Screenshot (Landing Page from Computer)
 ![Sample1](./img/sample1.png)
 
 ### Sample Screenshot (Landing Page from iPhone XR)
 ![Sample2](./img/sample2.png)
-
-## Demo https://anthonyphoto.github.io/Image-LookUp/
 

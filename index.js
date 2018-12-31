@@ -7,10 +7,6 @@
 const weatherKey = '9618a8d8432940b2ef54e1ec33601bab';
 const weatherEndpoint = 'https://api.openweathermap.org/data/2.5/weather'
 
-/* Google map */
-const mapKey = 'AIzaSyDZru626EgBL1Ry4UzDOIr-VpjunKoQtO8';
-const mapEndpoint ='https://maps.googleapis.com/maps/api/geocode/json';
-
 /* Google map init */
 var map;
 
@@ -217,11 +213,9 @@ function renderSpec(exif) {
   $('#js-col1').append((exif.strFile)? `<li>Name: ${exif.strFile}</li>`:'');
   $('#js-col1').append((exif.resX)? `<li>Resolution: ${exif.resX} x ${exif.resY}</li>`:'');
   $('#js-col1').append((exif.strSize)? `<li>File Size: ${exif.strSize}</li>`:'');
-
   $('#js-col2').append((exif.strFocal)? `<li>Shot at ${exif.strFocal}</li>`:'');
   $('#js-col2').append(shotInfo? `<li>${shotInfo}</li>`:'');
   $('#js-col2').append(exif.strFlash? `<li>${exif.strFlash}</li>`:'');
-
   $('#js-col3').append(exif.strCamera? `<li>Brand: ${exif.strCamera}</li>`:'');
   $('#js-col3').append(exif.strModel? `<li>Model: ${exif.strModel}</li>`:'');
   $('#js-col3').append(exif.strSW? `<li>SW: ${exif.strSW}</li>`:'');
