@@ -68,7 +68,6 @@ function renderUploadedImage(e, file){
   fr.onload = function(e) {
     $('#js-img').append(`<img class='frame' alt='Uploaded Image' src='${this.result}'>`);
   }
-
 }
 
 /* Convert GPS coordinate Degree, min, sec to decimal */
@@ -138,7 +137,6 @@ function customExif(file) {
     strFlash: (exifObj.Flash)? exifObj.Flash.split(/,/)[0]: '',
     strSW: (exifObj.Software)? convertSW(exifObj.Software, exifObj.Make) : '',
     strOwner: (file.iptcdata.byline)? file.iptcdata.byline : ''
-
   }
 }
 
@@ -155,8 +153,7 @@ function renderWeather(responseJson) {
 
   console.log(responseJson);
   console.log(responseJson.weather[0].icon);
-  //console.log(new Date(responseJson.dt * 1000));
-  
+  //console.log(new Date(responseJson.dt * 1000)); 
 }
 
 /* get the weather info using API */
@@ -255,7 +252,6 @@ function handleSubmit() {
     }
   });
 }
-
 
 $(_ => {
   handleSubmit();  // Upon submitting an image
