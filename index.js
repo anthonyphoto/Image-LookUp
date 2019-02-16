@@ -16,7 +16,11 @@ function handleDemo() {
     $('#js-img').append(`<img class='frame' src='./img/IMG_4215.jpg'>`);
     renderSummary(demo);
     renderSpec(demo);
-    $(window).scrollTop( $("#js-rpt").offset().top );
+
+    $('html').animate({
+      scrollTop: $("#js-rpt").offset().top
+    }, 'slow');
+    // $(window).scrollTop( $("#js-rpt").offset().top );
   });
 }
 
@@ -131,7 +135,10 @@ function handleSubmit() {
         renderSummary(exif);  /* display result summary section */
         renderSpec(exif);     /* display image spec section */
 
-        $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
+        $('html').animate({
+          scrollTop: $("#js-rpt").offset().top
+        }, 'slow');
+        // $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
       });
     }
   });
