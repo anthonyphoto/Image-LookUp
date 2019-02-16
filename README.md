@@ -29,8 +29,11 @@ As an iPhone/iPad user, I was hoping Apple would provide a tool to view details 
 ### Technology Used
 * HTML/CSS/JavaScript/jQuery
 
-### Sample Screenshot (Landing Page from Computer)
+### Sample Screenshot (Landing Page from Desktop)
 ![Sample1](./img/sample1.png)
+
+### Sample Screenshot (Image-Lookup Page from Desktop)
+![Sample1](./img/sample3.png)
 
 ### Sample Screenshot (Landing Page from iPhone XR)
 ![Sample2](./img/sample2.png)
