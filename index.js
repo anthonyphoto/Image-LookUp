@@ -7,19 +7,19 @@ const weatherEndpoint = 'https://api.openweathermap.org/data/2.5/weather'
 function handleDemo() {
   $('#js-demo').on('click', function(event) {
     event.preventDefault(); /* diasble <a href */
-    const lat = 34.060200;  /* Demo GPS */
-    const lon = -118.278273;
-    const demo = {arrDt: ["October 14, 2016", "2:15pm"], resX: 5616, resY: 3744, strAperture: "F/2", strCamera: "Canon", strFile: "IMG_4215.JPG", strFlash: "Flash did not fire", strFocal: "135 mm", strIso: "ISO-400", strModel: "Canon EOS 5D Mark II", strOwner: "Anthony Kim", strSW: "Adobe Photoshop CS6", strShutter: "1/640 sec", strSize: "5.6 MB" }
+    const lat = 33.812100689; /* Demo GPS */
+    const lon = -117.91898489;
+    const demo = {arrDt: ["March 25, 2018", "3:15pm"], resX: 3200, resY: 1800, strAperture: "F/4", strCamera: "Canon", strFile: "IMG_1680.JPG", strFlash: "Flash did not fire", strFocal: "37 mm", strIso: "ISO-400", strModel: "Canon EOS 5D Mark II", strOwner: "Anthony Kim", strSW: "Adobe Photoshop CS6", strShutter: "1/60 sec", strSize: "2.6 MB" }
     resetPage();
     getWeather(lat, lon);   
     updateMap(lat, lon);
-    $('#js-img').append(`<img class='frame' src='./img/IMG_4215.jpg'>`);
+    $('#js-img-demo').append(`<img class='frame-demo' alt='demo' src='./img/IMG_6810.jpg'>`);
     renderSummary(demo);
     renderSpec(demo);
 
     if ($(window).width() > 760 ){
       $('html').animate({
-        scrollTop: $("#js-rpt").offset().top
+        scrollTop: $("#js-img-demo").offset().top
       }, 1000);  // speed 400: normal
     }
     else {
@@ -142,7 +142,7 @@ function handleSubmit() {
         if ($(window).width() > 760 ){
           $('html').animate({
             scrollTop: $("#js-rpt").offset().top
-          }, 1000);
+          }, 800);
         }
         else {
           $(window).scrollTop( $("#js-rpt").offset().top );

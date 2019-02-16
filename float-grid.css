@@ -54,6 +54,14 @@
   margin-top: 2rem;
 }
 
+.frame-demo {
+  box-shadow: 3px 5px 10px #777777;
+  max-width: 100%;
+  padding: 1.2%;
+  border: 1px solid #777777;
+
+}
+
 /* Non-mobile, grid Originally 640 -> Updated 760 */
 @media only screen and (min-width: 760px) {
   /* 3 columns, 3/12 in % */
@@ -81,8 +89,13 @@
   .col-12 {
     width: 100%;
   }
+
   .mg_top {
     margin-top: 8rem;
+  }
+
+  .frame-demo {
+    max-width: 80%;
   }
 }
 

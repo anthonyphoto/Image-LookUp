@@ -73,15 +73,15 @@ function renderGpsFailure() {
 
 function resetPage() {
   $('.hidden').removeClass('hidden'); /* show all hidden sections */
-  $('#js-summary, #js-col1, #js-col2, #js-col3, #js-loc, #js-loc-desc, #js-img').empty();  /* remove previous contents */
+  $('#js-summary, #js-col1, #js-col2, #js-col3, #js-loc, #js-loc-desc, #js-img, #js-img-demo').empty();  /* remove previous contents */
 }
 
 function renderSummary(exif) {
   const stmtSW = (exif.strSW)? ` and developed with ${exif.strSW}`: '';
-  const stmtTime = (exif.arrDt)? `The file was created ${(exif.strOwner)? 'by ' + exif.strOwner : ''} at ${exif.arrDt[1]} on ${exif.arrDt[0]}${stmtSW}.` : '';
+  const stmtTime = (exif.arrDt)? `The file was created ${(exif.strOwner)? 'with ' + exif.strOwner + '\'s camera' : ''} at ${exif.arrDt[1]} on ${exif.arrDt[0]}${stmtSW}.` : '';
 
   if (exif.strCamera) {
-    $('#js-summary').html(`This picture was taken ${(exif.strOwner)? 'by ' + exif.strOwner : ''} <span class= 'font_m' id='js-loc-sum'></span> at ${exif.arrDt[1]} on ${exif.arrDt[0]}. &nbsp; ${exif.strCamera} camera, "${exif.strModel}" was used${stmtSW}.
+    $('#js-summary').html(`This picture was taken ${(exif.strOwner)? 'with ' + exif.strOwner + '\'s camera' : ''} <span class= 'font_m' id='js-loc-sum'></span> at ${exif.arrDt[1]} on ${exif.arrDt[0]}. &nbsp; ${exif.strCamera} camera, "${exif.strModel}" was used${stmtSW}.
     `);
   } else {
     $('#js-summary').html(`Hmm.. It looks like your file is missing EXIF information, which means there is no shooting information available. ${stmtTime}
