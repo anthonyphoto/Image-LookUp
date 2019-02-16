@@ -17,7 +17,7 @@ function handleDemo() {
     renderSummary(demo);
     renderSpec(demo);
 
-    $('html').animate({
+    $(window).animate({
       scrollTop: $("#js-rpt").offset().top
     }, 'slow');
     // $(window).scrollTop( $("#js-rpt").offset().top );
@@ -135,7 +135,7 @@ function handleSubmit() {
         renderSummary(exif);  /* display result summary section */
         renderSpec(exif);     /* display image spec section */
 
-        $('html').animate({
+        $(window).animate({
           scrollTop: $("#js-rpt").offset().top
         }, 'slow');
         // $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
