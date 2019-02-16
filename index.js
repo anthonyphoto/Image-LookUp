@@ -17,10 +17,14 @@ function handleDemo() {
     renderSummary(demo);
     renderSpec(demo);
 
-    $(window).animate({
-      scrollTop: $("#js-rpt").offset().top
-    }, 'slow');
-    // $(window).scrollTop( $("#js-rpt").offset().top );
+    if ($(window).width() > 760 ){
+      $('html').animate({
+        scrollTop: $("#js-rpt").offset().top
+      }, 1000);  // speed 400: normal
+    }
+    else {
+      $(window).scrollTop( $("#js-rpt").offset().top );
+    }
   });
 }
 
@@ -134,11 +138,15 @@ function handleSubmit() {
         renderUploadedImage(e, file); /* display uploaded image */
         renderSummary(exif);  /* display result summary section */
         renderSpec(exif);     /* display image spec section */
-
-        $(window).animate({
-          scrollTop: $("#js-rpt").offset().top
-        }, 'slow');
-        // $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
+        
+        if ($(window).width() > 760 ){
+          $('html').animate({
+            scrollTop: $("#js-rpt").offset().top
+          }, 1000);
+        }
+        else {
+          $(window).scrollTop( $("#js-rpt").offset().top );
+        }
       });
     }
   });
